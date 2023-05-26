@@ -6,7 +6,7 @@ export const errorID = `*[_type=="generalSettings"][0].error->_id`
 const page = `
   "type": _type,
   "slug": slug.current,
-  "isHome": _id == ${homeID},
+  "isHome": _id == ${homeID}
 `
 
 // Construct our "link" GROQ
@@ -22,7 +22,7 @@ const link = `
 
 // Construct our "image meta" GROQ
 export const imageMeta = `
-  "alt": coalesce(alt, asset->altText),
+  "alt": coalesce(alt, asset->alt),
   asset,
   crop,
   customRatio,
@@ -73,11 +73,6 @@ export const blocks = `
         ${ptContent}
       }
     }
-  },
-  _type == 'productCard' => {
-    _type,
-    _key,
-    product->${product}
   }
 `
 
@@ -134,11 +129,6 @@ export const modules = `
         "photo": {
           ${imageMeta}
         }
-      },
-      _type == 'product' => {
-        _type,
-        _id,
-        "product": *[_type == "product" && _id == ^ ._ref][0]${product}
       }
     },
     speed,
@@ -178,8 +168,7 @@ export const site = `
           ${link},
           dropdownItems[]{
             ${link}
-          },
-          featured[]->${product}
+          }
         }
       },
       menuDesktopRight->{
@@ -187,8 +176,7 @@ export const site = `
           ${link},
           dropdownItems[]{
             ${link}
-          },
-          featured[]->${product}
+          }
         }
       },
       menuMobilePrimary->{
