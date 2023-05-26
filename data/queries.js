@@ -1,13 +1,5 @@
-import { sortTypes } from '../studio/schemas/objects/shop-sort'
-
-// Create our sorting fallback titles from Sanity
-const sortFallbacks = sortTypes
-  .map((type) => `type == "${type.value}" => "${type.title}"`)
-  .join(',')
-
 // Construct our "home" and "error" page GROQ
 export const homeID = `*[_type=="generalSettings"][0].home->_id`
-export const shopID = `*[_type=="generalSettings"][0].shop->_id`
 export const errorID = `*[_type=="generalSettings"][0].error->_id`
 
 // Construct our "page" GROQ
@@ -15,7 +7,6 @@ const page = `
   "type": _type,
   "slug": slug.current,
   "isHome": _id == ${homeID},
-  "isShop": _id == ${shopID}
 `
 
 // Construct our "link" GROQ
@@ -58,70 +49,6 @@ export const ptContent = `
   },
   _type == "photo" => {
     ${imageMeta}
-  }
-`
-
-// Construct our "product" GROQ
-export const product = `
-  {
-    "publishDate": coalesce(publishDate, _createdAt),
-    "slug": slug.current,
-    "id": productID,
-    title,
-    price,
-    comparePrice,
-    description[]{
-      ${ptContent}
-    },
-    "photos": {
-      "main": galleryPhotos[]{
-        forOption,
-        photos[]{
-          ${imageMeta}
-        }
-      },
-      "listing": listingPhotos[]{
-        forOption,
-        "default": listingPhoto{
-          ${imageMeta}
-        },
-        "hover": listingPhotoHover{
-          ${imageMeta}
-        }
-      },
-    },
-    inStock,
-    lowStock,
-    useGallery,
-    surfaceOption,
-    options[]{
-      name,
-      position,
-      values[]
-    },
-    optionSettings[]{
-      forOption,
-      "color": color->color,
-    },
-    "variants": *[_type == "productVariant" && productID == ^.productID && wasDeleted != true && isDraft != true]{
-      "id": variantID,
-      title,
-      price,
-      comparePrice,
-      inStock,
-      lowStock,
-      options[]{
-        name,
-        position,
-        value
-      },
-      seo
-    },
-    "klaviyoAccountID": *[_type == "generalSettings"][0].klaviyoAccountID,
-    "filters": filters[]{
-      "slug": filter->slug.current,
-      forOption
-    }
   }
 `
 
@@ -224,43 +151,6 @@ export const modules = `
     photo{
       ${imageMeta}
     }
-  },
-  _type == 'productHero' => {
-    _type,
-    _key,
-  },
-  _type == 'collectionGrid' => {
-    _type,
-    _key,
-    "title": ^.title,
-    "paginationLimit": *[_type == "shopSettings"][0].paginationLimit,
-    "filter": *[_type == "shopSettings"][0].filter{
-      isActive,
-      groups[]{
-        "id": _key,
-        title,
-        "slug": slug.current,
-        display,
-        options[]->{
-          type,
-          title,
-          "slug": slug.current,
-          "color": color->color
-        }
-      }
-    },
-    "sort": *[_type == "shopSettings"][0].sort{
-      isActive,
-      options[]{
-        "slug": type,
-        "title": coalesce(title, select(
-          ${sortFallbacks}
-        ))
-      }
-    },
-    "noFilterResults": *[_type == "shopSettings"][0].noFilterResults[]{
-      ${ptContent}
-    },
   }
 `
 
@@ -269,14 +159,6 @@ export const site = `
   "site": {
     "title": *[_type == "generalSettings"][0].siteTitle,
     "rootDomain": *[_type == "generalSettings"][0].siteURL,
-    "shop": *[_type == "shopSettings"][0]{
-      storeURL,
-      cartMessage
-    },
-    "productCounts": [ {"slug": "all", "count": count(*[_type == "product"])} ] + *[_type == "collection"]{
-      "slug": slug.current,
-      "count": count(products)
-    },
     "cookieConsent": *[_type == "cookieSettings"][0]{
       enabled,
       message,
@@ -382,9 +264,4 @@ export const site = `
     },
     "gtmID": *[_type == "generalSettings"][0].gtmID,
   }
-`
-
-// All Products
-export const allProducts = `
-  *[_type == "product" && wasDeleted != true && isDraft != true]${product} | order(title asc)
 `
