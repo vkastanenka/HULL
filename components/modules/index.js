@@ -4,8 +4,6 @@ import Grid from './grid'
 import Hero from './hero'
 import Marquee from './marquee'
 import DividerPhoto from './divider-photo'
-import ProductHero from './product-hero'
-import Collection from './collection-grid'
 
 export const Module = ({
   index,
@@ -19,8 +17,6 @@ export const Module = ({
     hero: Hero,
     marquee: Marquee,
     dividerPhoto: DividerPhoto,
-    productHero: ProductHero,
-    collectionGrid: Collection,
   }[data?._type] ?? <></>
 
   return (
