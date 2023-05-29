@@ -8,6 +8,8 @@ import Icon from '@components/icon'
 const Footer = ({ data = {} }) => {
   const { blocks } = data
 
+  return null
+
   return (
     <footer className="footer" role="contentinfo">
       <div className="footer--grid">

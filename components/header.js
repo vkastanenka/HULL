@@ -58,6 +58,8 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
     onSetup({ height: headerHeight })
   }, [headerHeight])
 
+  return null
+
   return (
     <>
       <a href="#content" className="skip-link">
