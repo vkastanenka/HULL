@@ -89,6 +89,8 @@ module.exports = {
     extend: {
       fontFamily: {
         inherit: 'inherit',
+        barlow: 'Barlow',
+        'basis-grotesque-pro': 'Basis Grotesque Pro',
       },
       maxWidth: {
         xs: '20rem',
