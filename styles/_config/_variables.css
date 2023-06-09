@@ -1,16 +1,120 @@
 /* Variables */
 :root {
-  --black: #000000;
+  --black: #373E4D;
   --white: #ffffff;
 
   --black-hsl: 0, 0%, 0%;
   --white-hsl: 0, 0%, 100%;
 
-  --pageBG: #f4f4f0;
-  --pageText: #000000;
+  --pageBG: #ffffff;
+  --pageText: #373E4D;
 
   --pageBG-hsl: 60, 14%, 95%;
   --pageText-hsl: 0, 0%, 0%;
+
+  --neutral-100: '#FFFFFF';
+  --neutral-200: '#E7E8EA';
+  --neutral-300: '#BFC1C7';
+  --neutral-400: '#A1A4AB';
+  --neutral-500: '#8C9098';
+  --neutral-600: '#777C86';
+  --neutral-700: '#626773';
+  --neutral-800: '#4D5360';
+  --neutral-900: '#373E4D';
+
+  --blue-main: '#2C5CAA';
+  --blue-dark: '#3269C2';
+  --blue-light: '#F2F6FC';
+  --blue-100: '#DCE6F8';
+  --blue-200: '#BED3F6';
+  --blue-300: '#A0BBE8';
+  --blue-400: '#759CDB';
+  --blue-500: '#5D8BD5';
+  --blue-600: '#4579CF';
+
+  --coral-main: '#F38374';
+  --coral-dark: '#F49083';
+  --coral-light: '#FBEEED';
+  --coral-100: '#F5DDDA';
+  --coral-200: '#F4D0CB';
+  --coral-300: '#F3C2BC';
+  --coral-400: '#F4B6AE';
+  --coral-500: '#F4AAA0';
+  --coral-600: '#F39C91';
+
+  --lightBlue-main: '#B8D1DB';
+  --lightBlue-dark: '#BFD5DE';
+  --lightBlue-light: '#EFF2F3';
+  --lightBlue-100: '#E8EDF0';
+  --lightBlue-200: '#E1E9EC';
+  --lightBlue-300: '#D9E4E9';
+  --lightBlue-400: '#D3E1E6';
+  --lightBlue-500: '#CDDDE4';
+  --lightBlue-600: '#C6D9E1';
+
+  --red-main: '#E43C2F';
+  --red-dark: '#E75246';
+  --red-light: '#FCECEA';
+  --red-100: '#F9D6D3';
+  --red-200: '#F6C0BB';
+  --red-300: '#F3AAA4';
+  --red-400: '#F0948D';
+  --red-500: '#ED7E75';
+  --red-600: '#EA685E';
+
+  --green-main: '#00607F';
+  --green-dark: '#1D728D';
+  --green-light: '#E6EFF2';
+  --green-100: '#C9DDE4';
+  --green-200: '#ACCBD5';
+  --green-300: '#8FB9C7';
+  --green-400: '#73A8B9';
+  --green-500: '#5696AA';
+  --green-600: '#39849C';
+
+  --yellow-main: '#F5EA47';
+  --yellow-dark: '#F7EF70';
+  --yellow-light: '#FEFDED';
+  --yellow-100: '#FDFBD8';
+  --yellow-200: '#FCF8C3';
+  --yellow-300: '#FBF6AE';
+  --yellow-400: '#FAF39A';
+  --yellow-500: '#F8F185';
+  --yellow-600: '#F7EF70';
+
+  --pink-main: '#F5B5C3';
+  --pink-dark: '#F7C6D0';
+  --pink-light: '#FEF8F9';
+  --pink-100: '#FDEFF2';
+  --pink-200: '#FCE7EB';
+  --pink-300: '#FBDFE5';
+  --pink-400: '#FBDFE5';
+  --pink-500: '#FAD6DE';
+  --pink-600: '#F8CED7';
+
+  --gold-main: '#B3A168';
+  --gold-dark: '#BCAC79';
+  --gold-light: '#F7F6F0';
+  --gold-100: '#EFEBDF';
+  --gold-200: '#E6E0CE';
+  --gold-300: '#DED6BD';
+  --gold-400: '#D5CBAC';
+  --gold-500: '#CDC19B';
+  --gold-600: '#C4B68A';
+
+  --premiumBlue-main: '#003399';
+  --premiumBlue-dark: '#1D4AA4';
+  --premiumBlue-light: '#E6EBF5';
+  --premiumBlue-100: '#C9D4E9';
+  --premiumBlue-200: '#ACBDDE';
+  --premiumBlue-300: '#8FA6D2';
+  --premiumBlue-400: '#738FC7';
+  --premiumBlue-500: '#5678BC';
+  --premiumBlue-600: '#3961B0';
+
+  --pearlescent-blue: '#D5E9F6';
+  --pearlescent-pink: '#EFEBF3';
+  --pearlescent-green: '#EEF5F9';
 }
 
 [data-theme='dark'] {
@@ -23,7 +127,7 @@
 
 [data-theme='metal'] {
   --pageBG: #000000;
-  --pageText: #FB1B15;
+  --pageText: #fb1b15;
 
   --pageBG-hsl: 0, 0%, 0%;
   --pageText-hsl: 2, 92%, 53%;

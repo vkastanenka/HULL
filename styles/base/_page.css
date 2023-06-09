@@ -10,9 +10,14 @@ body {
 }
 
 .section {
-  @apply relative px-16 py-48 sm:p-32 md:py-64 lg:py-80 border-b;
+  @apply relative flex;
 
   &--content {
-    @apply mx-auto;
+    @apply px-30 xs:px-16;
+  }
+
+  &__gutter--left,
+  &__gutter--right {
+    @apply pr-0 xs:pr-[calc(50%-27rem)] sm:pr-[calc(50%-36rem)] md:pr-[calc(50%-48rem)] lg:pr-[calc(50%-57rem)];
   }
 }

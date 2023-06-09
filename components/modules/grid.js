@@ -5,14 +5,24 @@ import Freeform from '@components/freeform'
 import AccordionList from '@components/accordion-list'
 
 const Grid = ({ data = {} }) => {
-  const { size, columns } = data
+  const {
+    size,
+    columns,
+    textColor,
+    backgroundColor,
+    paddingTop,
+    paddingBottom,
+    includeGutterLeft,
+    includeGutterRight,
+  } = data
 
   const getGridSize = (
     breakpoint,
     size,
     justify = false,
     align = false,
-    start = false
+    start = false,
+    order = false
   ) => {
     const hasBreakpoint = breakpoint && breakpoint.trim()
     const colSpan = hasBreakpoint
@@ -25,21 +35,28 @@ const Grid = ({ data = {} }) => {
 
     const colJustify = hasBreakpoint ? `${breakpoint}:${justify}` : justify
     const colAlign = hasBreakpoint ? `${breakpoint}:${align}` : align
+    const colOrder = hasBreakpoint ? `${breakpoint}:order-${order}` : `order-${order}`
 
     return cx(
       colSpan,
       start && colStart,
       justify && colJustify,
-      align && colAlign
+      align && colAlign,
+      order && colOrder
     )
   }
 
   return (
-    <section className="section">
+    <section
+      className={cx('section', paddingTop, paddingBottom)}
+      style={{
+        color: textColor.color.hex,
+        backgroundColor: backgroundColor.color.hex,
+      }} // TODO: Update values in sanity to tailwind
+    >
+      {includeGutterLeft && <div className="section__gutter--left" />}
       <div className="section--content">
-        <div
-          className={`grid grid-cols-${size} gap-x-4 gap-y-4 sm:gap-x-8 lg:gap-x-12 lg:gap-y-6`}
-        >
+        <div className={`grid grid-cols-${size} gap-x-16 gap-y-16`}>
           {columns.map((col, key) => {
             const { sizes, blocks } = col
 
@@ -53,7 +70,8 @@ const Grid = ({ data = {} }) => {
                       size.width,
                       size.justify,
                       size.align,
-                      size.start
+                      size.start,
+                      size.order
                     )
                   )
                 )}
@@ -66,6 +84,7 @@ const Grid = ({ data = {} }) => {
           })}
         </div>
       </div>
+      {includeGutterRight && <div className="section__gutter--right" />}
     </section>
   )
 }

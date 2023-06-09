@@ -82,13 +82,24 @@ export const modules = `
     _type,
     _key,
     size,
+    textColor->{
+      color
+    },
+    backgroundColor->{
+      color
+    },
+    paddingTop,
+    paddingBottom,
+    includeGutterLeft,
+    includeGutterRight,
     columns[]{
       sizes[]{
         breakpoint,
         width,
         justify,
         align,
-        start
+        start,
+        order
       },
       blocks[]{
         ${blocks}
@@ -252,4 +263,11 @@ export const site = `
     },
     "gtmID": *[_type == "generalSettings"][0].gtmID,
   }
+`
+
+// Construct out "solidColor" GROQ
+export const solidColor = (documentId) => `
+  *[_type == "solidColor" && _id == "${documentId}"][0]{
+    color
+  }.color
 `
