@@ -253,3 +253,10 @@ export const site = `
     "gtmID": *[_type == "generalSettings"][0].gtmID,
   }
 `
+
+// Construct out "solidColor" GROQ
+export const solidColor = (documentId) => `
+  *[_type == "solidColor" && _id == "${documentId}"][0]{
+    color
+  }.color
+`

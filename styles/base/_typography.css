@@ -17,45 +17,77 @@
     @apply bg-pageBG text-pageText font-basis-grotesque-pro leading-100;
   }
 
-  p {
-    @apply m-0 text-16 leading-150;
+  p,
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply m-0;
+  }
+  /* Body */
+  .is-body1 {
+    @apply text-16 md:text-18 leading-150 md:leading-135;
+  }
+
+  .is-body2 {
+    @apply text-14 md:text-16 leading-155 md:leading-150;
+  }
+
+  .is-body3 {
+    @apply text-12 md:text-14 leading-150 md:leading-155;
+  }
+
+  .is-body4 {
+    @apply text-10 md:text-12 leading-160 md:leading-135;
+  }
+
+  .is-large {
+    @apply text-18 md:text-21 leading-150;
+  }
+  /* Headlines */
+  .is-header1 {
+    @apply text-40 md:text-72 font-bold leading-120 md:leading-114;
+  }
+
+  .is-header2 {
+    @apply text-32 md:text-64 font-bold leading-112 md:leading-112;
+  }
+
+  .is-header3 {
+    @apply text-24 md:text-56 font-bold leading-125 md:leading-114;
+  }
+
+  .is-header4 {
+    @apply text-22 md:text-40 font-bold leading-135 md:leading-120;
+  }
+
+  .is-numeric {
+    font-family: Barlow !important;
+    font-weight: 500;
+  }
+
+  .icon--32 {
+    @apply w-24 md:w-32;
+  }
+
+  .icon--24 {
+    @apply w-18 md:w-24;
+  }
+
+  .icon--18 {
+    @apply w-18;
+  }
+
+  .icon--16 {
+    @apply w-16;
   }
 
   strong {
-    @apply font-semibold;
+    @apply font-bold;
   }
 
-  ul {
+  .ul-init {
     @apply list-none m-0 p-0;
-  }
-
-  /* Headlines */
-  h1,
-  .is-h1 {
-    @apply m-0 text-48 font-bold leading-125;
-  }
-
-  h2,
-  .is-h2 {
-    @apply m-0 text-36 font-bold leading-125;
-  }
-
-  h3,
-  .is-h3 {
-    @apply m-0 text-30 font-bold leading-125;
-  }
-
-  h4,
-  .is-h4 {
-    @apply m-0 text-24 font-bold leading-135;
-  }
-
-  h5 {
-    @apply m-0 text-20 font-normal leading-125;
-  }
-
-  h6 {
-    @apply m-0 text-12 font-normal leading-125;
   }
 
   /* Links */
@@ -83,10 +115,6 @@
   ::selection {
     @apply bg-pageText text-pageBG;
   }
-}
-
-.numeric {
-  font-family: Barlow;
 }
 
 .text-start {
@@ -124,7 +152,7 @@ p {
   }
 }
 
-ul {
+/* ul {
   .rc & {
     @apply pl-8 text-16 leading-150;
 
@@ -141,6 +169,37 @@ ul {
       }
     }
   }
+} */
+
+.li-custom {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.marker-container {
+  border-radius: 50%;
+  border: solid black 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  position: relative;
+}
+
+.marker-container.marker-container1 {
+  @apply w-24 md:w-32 h-24 md:h-32;
+}
+
+.marker-container.marker-container2 {
+  @apply w-18 md:w-24 h-18 md:h-24;
+}
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 h1,
