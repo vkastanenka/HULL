@@ -82,13 +82,24 @@ export const modules = `
     _type,
     _key,
     size,
+    textColor->{
+      color
+    },
+    backgroundColor->{
+      color
+    },
+    paddingTop,
+    paddingBottom,
+    includeGutterLeft,
+    includeGutterRight,
     columns[]{
       sizes[]{
         breakpoint,
         width,
         justify,
         align,
-        start
+        start,
+        order
       },
       blocks[]{
         ${blocks}
