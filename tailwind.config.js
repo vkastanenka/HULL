@@ -9,7 +9,7 @@ module.exports = {
     /(self|justify-self|items|justify)-(start|center|end)/,
     /(bg|text)-(black|white|blue|coral|lightBlue|red|green|yellow|pink|premiumBlue)/,
     /(col-span|grid-cols|order|col-start)-(1|2|3|4|5|6|7|8|9|10|11|12)/,
-    /m(l|x|r)-auto/
+    /m(l|x|r)-auto/,
   ].map((pattern) => ({
     pattern,
     variants: ['xs', 'sm', 'md', 'lg'],
@@ -63,13 +63,18 @@ module.exports = {
         acc[val] = `${val / 10}rem`
         return acc
       }, {}),
-    lineHeight: new Array(161)
-      .fill()
-      .map((_, i) => i)
-      .reduce((acc, val) => {
-        acc[val] = val / 100
-        return acc
-      }, {}),
+    lineHeight: {
+      ...new Array(161)
+        .fill()
+        .map((_, i) => i)
+        .reduce((acc, val) => {
+          acc[val] = val / 100
+          return acc
+        }, {}),
+      wound: 1.1,
+      gripped: 1.4,
+      normal: 1.5,
+    },
     spacing: new Array(351)
       .fill()
       .map((_, i) => i)

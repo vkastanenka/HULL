@@ -5,56 +5,67 @@ import cx from 'classnames'
 import Photo from '@components/photo'
 import CustomLink from '@components/link'
 
+const regexTypography = /^body\d|^large|^header\d|^normal/
+
+const Typography = ({ variant, ...props }) => {
+  const data = {
+    El: 'p',
+    className: 'typography--body1',
+  }
+
+  switch (variant) {
+    case 'body2':
+      data.className = 'typography--body2'
+      break
+
+    case 'body3':
+      data.className = 'typography--body3'
+      break
+
+    case 'body4':
+      data.className = 'typography--body4'
+      break
+
+    case 'large':
+      data.className = 'typography--large'
+      break
+
+    case 'header1':
+      data.El = 'h1'
+      data.className = 'typography--header1'
+      break
+
+    case 'header2':
+      data.El = 'h2'
+      data.className = 'typography--header2'
+      break
+
+    case 'header3':
+      data.El = 'h3'
+      data.className = 'typography--header3'
+      break
+
+    case 'header4':
+      data.El = 'h4'
+      data.className = 'typography--header4'
+      break
+  }
+
+  return <data.El className={cx(data.className)} {...props} />
+}
+
 export const blockSerializers = {
   types: {
     block: (props) => {
       const { markDefs, style = 'normal' } = props.node
 
-      // check if our block contains a button
-      const hasButton =
-        markDefs &&
-        markDefs.some((c) => c._type === 'link' && c.isButton === true)
+      // // check if our block contains a button
+      // const hasButton =
+      //   markDefs &&
+      //   markDefs.some((c) => c._type === 'link' && c.isButton === true)
 
-      // build our mock header styles
-      if (style === 'h1mock') {
-        return (
-          <p className={cx('is-h1', { 'has-btn': hasButton })}>
-            {props.children}
-          </p>
-        )
-      }
-
-      if (style === 'h2mock') {
-        return (
-          <p className={cx('is-h2', { 'has-btn': hasButton })}>
-            {props.children}
-          </p>
-        )
-      }
-
-      if (style === 'h3mock') {
-        return (
-          <p className={cx('is-h3', { 'has-btn': hasButton })}>
-            {props.children}
-          </p>
-        )
-      }
-
-      if (style === 'h4mock') {
-        return (
-          <p className={cx('is-h4', { 'has-btn': hasButton })}>
-            {props.children}
-          </p>
-        )
-      }
-
-      // go through our remaing, true header styles
-      if (/^h\d/.test(style)) {
-        return React.createElement(
-          style,
-          { className: hasButton ? 'has-btn' : null },
-          props.children
-        )
+      if (regexTypography.test(style)) {
+        return <Typography variant={style}>{props.children}</Typography>
       }
 
       // handle all other blocks with the default serializer
@@ -66,10 +77,18 @@ export const blockSerializers = {
     horizontalRule: () => <hr />,
   },
   marks: {
+    render: ({ mark, children }) => (
+      <span className={cx(mark.element)}>{children}</span>
+    ),
     link: ({ mark, children }) => {
       const { 0: title } = children
 
       return <CustomLink link={{ ...mark, title }} />
     },
+    numeric: ({ children }) => <span className="typography--numeric">{children}</span>,
+    textAlignCenter: ({ children }) => (
+      <span style={{ display: 'block', textAlign: 'center' }}>{children}</span>
+    ),
+    sup: ({ children }) => <sup>{children}</sup>,
   },
 }
