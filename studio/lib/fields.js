@@ -78,7 +78,7 @@ export const breakpoint = ({ ...props } = {}) => ({
       { title: 'Default', value: ' ' },
       { title: 'XS (480px and up)', value: 'xs' },
       { title: 'SM (768px and up)', value: 'sm' },
-      { title: 'MD (940px and up)', value: 'md' },
+      { title: 'MD (992px and up)', value: 'md' },
       { title: 'LG (1200px and up)', value: 'lg' },
       { title: 'XL (1600px and up)', value: 'xl' },
     ],
