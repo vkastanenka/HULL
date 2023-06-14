@@ -4,6 +4,8 @@ import Accordion from '@components/accordion'
 import BlockContent from '@components/block-content'
 
 const AccordionList = ({ data }) => {
+  if (!data) return null
+
   const { items } = data
 
   const [activeAccordion, setActiveAccordion] = useState(null)

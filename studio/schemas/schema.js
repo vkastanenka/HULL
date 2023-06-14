@@ -60,6 +60,11 @@ import productCard from './objects/product-card'
 
 import participant from './objects/participant'
 
+// New code
+import photo from '../lib/custom-image'
+import blockSettings from './objects/block-settings'
+import sectionSettings from './objects/section-settings'
+
 /*  ------------------------------------------ */
 /*  Your Schema documents / modules / objects
 /*  ------------------------------------------ */
@@ -128,6 +133,11 @@ export default createSchema({
     accordion,
     productCard,
 
-    participant
-  ])
+    participant,
+
+    // New code
+    photo(),
+    blockSettings,
+    sectionSettings,
+  ]),
 })

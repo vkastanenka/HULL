@@ -29,3 +29,28 @@
 @import 'modules/_divider';
 
 @import '_shame';
+
+/* TODO: Optimize for next 13 once installed */
+@font-face {
+  font-family: 'Barlow';
+  font-weight: 500;
+  src: url('/fonts/Barlow-Medium.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Basis Grotesque Pro';
+  font-weight: 400;
+  src: url('/fonts/BasisGrotesquePro-Regular.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Basis Grotesque Pro';
+  font-weight: 500;
+  src: url('/fonts/BasisGrotesquePro-Medium.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Basis Grotesque Pro';
+  font-weight: 700;
+  src: url('/fonts/BasisGrotesquePro-Bold.otf') format('otf');
+}

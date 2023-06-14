@@ -1,4 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@font-face {
+  font-family: 'Barlow';
+  font-weight: 500;
+  src: url('/static/fonts/Barlow-Medium.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Basis Grotesque Pro';
+  font-weight: 400;
+  src: url('/static/fonts/BasisGrotesquePro-Regular.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Basis Grotesque Pro';
+  font-weight: 500;
+  src: url('/static/fonts/BasisGrotesquePro-Medium.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Basis Grotesque Pro';
+  font-weight: 700;
+  src: url('/static/fonts/BasisGrotesquePro-Bold.otf') format('otf');
+}
 
 :root {
   /* sanity variables */
@@ -108,8 +130,8 @@ button:not([disabled]),
 }
 
 .pt-editable * {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif !important;
   color: var(--pt-text);
+  margin: 0;
 }
 
 .btn {
@@ -158,4 +180,134 @@ button:not([disabled]),
   box-sizing: border-box;
   width: 100%;
   text-align: center;
+}
+
+/* New Styles */
+
+.typography--numeric {
+  font-weight: 500;
+  font-family: Barlow, sans-serif !important;
+}
+
+.typography--body1 {
+  /* font-size: 16px */
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: Basis Grotesque Pro, sans-serif;
+}
+
+.typography--body2 {
+  /* font-size: 14px */
+  font-size: 0.875rem;
+  /* line-height: 22px */
+  line-height: 1.375rem;
+  font-family: Basis Grotesque Pro, sans-serif;
+}
+
+.typography--body3 {
+  /* font-size: 12px */
+  font-size: 0.75rem;
+  /* line-height: 22px */
+  line-height: 1.375rem;
+  font-family: Basis Grotesque Pro, sans-serif;
+}
+
+.typography--large {
+  /* font-size: 18px */
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-family: Basis Grotesque Pro, sans-serif;
+}
+
+.typography--header1 {
+  /* font-size: 40px */
+  font-size: 2.5rem;
+  /* line-height: 1.1; */
+  font-weight: 700;
+  font-family: Basis Grotesque Pro, sans-serif;
+  letter-spacing: -0.03125rem;
+}
+
+.typography--header2 {
+  /* font-size: 32px */
+  font-size: 2rem;
+  line-height: 1.1;
+  font-weight: 700;
+  font-family: Basis Grotesque Pro, sans-serif;
+}
+
+.typography--header3 {
+  /* font-size: 28px */
+  font-size: 1.75rem;
+  line-height: 1.1;
+  font-weight: 700;
+  font-family: Basis Grotesque Pro, sans-serif;
+}
+
+.typography--header4 {
+  /* font-size: 20px */
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 700;
+  font-family: Basis Grotesque Pro, sans-serif;
+}
+
+@media screen and (min-width: 992px) {
+  .typography--body1 {
+    /* font-size: 18px */
+    font-size: 1.125rem;
+  }
+
+  .typography--body2 {
+    /* font-size: 16px */
+    font-size: 1rem;
+    /* line-height: 24px */
+    line-height: 1.5rem;
+  }
+
+  .typography--body3 {
+    /* line-height: 24px */
+    line-height: 1.5rem;
+  }
+
+  .typography--body4 {
+    /* font-size: 12px */
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  .typography--large {
+    /* font-size: 21px */
+    font-size: 1.3125rem;
+    line-height: 1.5;
+  }
+
+  .typography--header1 {
+    /* font-size: 56px */
+    font-size: 3.5rem;
+  }
+
+  .typography--header2 {
+    /* font-size: 52px */
+    font-size: 3.25rem;
+    line-height: 1.12;
+    letter-spacing: -0.03125rem;
+  }
+
+  .typography--header3 {
+    /* font-size: 40px */
+    font-size: 2.5rem;
+  }
+
+  .typography--header4 {
+    /* font-size: 24px */
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .typography--header1 {
+    /* font-size: 72px */
+    font-size: 4.5rem;
+  }
 }

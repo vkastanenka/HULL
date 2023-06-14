@@ -1,12 +1,9 @@
-import {
-  Header1,
-  Header2,
-  Header3,
-  Header4,
-  Button
-} from '../../components/block-renders'
+import React from 'react'
 
-import customImage from '../../lib/custom-image'
+import { Button } from '../../components/block-renders'
+import { Repeat, TextAlignCenter } from 'phosphor-react'
+
+import photo from '../../lib/custom-image'
 
 export default {
   title: 'Rich Text',
@@ -17,69 +14,119 @@ export default {
       title: 'Block',
       type: 'block',
       styles: [
-        { title: 'Paragraph', value: 'normal' },
         {
-          title: 'H1 (use once)',
-          value: 'h1',
+          title: 'Body1',
+          value: 'normal',
           blockEditor: {
-            render: Header1
-          }
+            render: ({ children }) => (
+              <span className="typography--body1">{children}</span>
+            ),
+          },
         },
         {
-          title: 'H1 (mimic)',
-          value: 'h1mock',
+          title: 'Body2',
+          value: 'body2',
           blockEditor: {
-            render: Header1
-          }
+            render: ({ children }) => (
+              <span className="typography--body2">{children}</span>
+            ),
+          },
         },
         {
-          title: 'H2',
-          value: 'h2',
+          title: 'Body3',
+          value: 'body3',
           blockEditor: {
-            render: Header2
-          }
+            render: ({ children }) => (
+              <span className="typography--body3">{children}</span>
+            ),
+          },
         },
         {
-          title: 'H2 (mimic)',
-          value: 'h2mock',
+          title: 'Large',
+          value: 'large',
           blockEditor: {
-            render: Header2
-          }
+            render: ({ children }) => (
+              <span className="typography--large">{children}</span>
+            ),
+          },
         },
         {
-          title: 'H3',
-          value: 'h3',
+          title: 'Header1',
+          value: 'header1',
           blockEditor: {
-            render: Header3
-          }
+            render: ({ children }) => (
+              <span className="typography--header1">{children}</span>
+            ),
+          },
         },
         {
-          title: 'H3 (mimic)',
-          value: 'h3mock',
+          title: 'Header2',
+          value: 'header2',
           blockEditor: {
-            render: Header3
-          }
+            render: ({ children }) => (
+              <span className="typography--header2">{children}</span>
+            ),
+          },
         },
         {
-          title: 'H4',
-          value: 'h4',
+          title: 'Header3',
+          value: 'header3',
           blockEditor: {
-            render: Header4
-          }
+            render: ({ children }) => (
+              <span className="typography--header3">{children}</span>
+            ),
+          },
         },
         {
-          title: 'H4 (mimic)',
-          value: 'h4mock',
+          title: 'Header4',
+          value: 'header4',
           blockEditor: {
-            render: Header4
-          }
-        }
+            render: ({ children }) => (
+              <span className="typography--header4">{children}</span>
+            ),
+          },
+        },
       ],
       lists: [{ title: 'Bullet', value: 'bullet' }],
       marks: {
         decorators: [
           { title: 'Strong', value: 'strong' },
-          { title: 'Emphasis', value: 'em' }
+          { title: 'Emphasis', value: 'em' },
+          { title: 'Underline', value: 'underline' },
+          {
+            title: 'Text Align Center',
+            value: 'textAlignCenter',
+            blockEditor: {
+              icon: TextAlignCenter,
+              render: ({ children }) => (
+                <span style={{ textAlign: 'center', display: 'block' }}>
+                  {children}
+                </span>
+              ),
+            },
+          },
+          {
+            title: 'Numeric',
+            value: 'numeric',
+            blockEditor: {
+              icon: () => <div>#</div>,
+              render: ({ children }) => (
+                <span className="typography--numeric">{children}</span>
+              ),
+            },
+          },
+          {
+            title: 'Superscript',
+            value: 'sup',
+            blockEditor: {
+              icon: () => (
+                <div>
+                  x<sup>2</sup>
+                </div>
+              ),
+              render: ({ children }) => <sup>{children}</sup>,
+            },
+          },
         ],
         annotations: [
           {
@@ -87,7 +134,7 @@ export default {
             name: 'link',
             type: 'object',
             blockEditor: {
-              render: Button
+              render: Button,
             },
             fields: [
               {
@@ -97,11 +144,11 @@ export default {
                 options: {
                   list: [
                     { title: 'Internal Page', value: 'internal' },
-                    { title: 'External URL', value: 'external' }
-                  ]
+                    { title: 'External URL', value: 'external' },
+                  ],
                 },
                 initialValue: 'internal',
-                validation: Rule => Rule.required()
+                validation: (Rule) => Rule.required(),
               },
               {
                 title: 'Internal Page',
@@ -110,72 +157,106 @@ export default {
                 to: [
                   { type: 'page' },
                   { type: 'collection' },
-                  { type: 'product' }
+                  { type: 'product' },
                 ],
-                hidden: ({ parent }) => parent.linkType !== 'internal'
+                hidden: ({ parent }) => parent.linkType !== 'internal',
               },
               {
                 title: 'External URL',
                 name: 'url',
                 type: 'url',
-                validation: Rule =>
+                validation: (Rule) =>
                   Rule.uri({
-                    scheme: ['http', 'https', 'mailto', 'tel']
+                    scheme: ['http', 'https', 'mailto', 'tel'],
                   }),
-                hidden: ({ parent }) => parent.linkType !== 'external'
+                hidden: ({ parent }) => parent.linkType !== 'external',
               },
+              // {
+              //   title: 'Style as Button?',
+              //   name: 'isButton',
+              //   type: 'boolean',
+              //   initialValue: false,
+              // },
+              // {
+              //   name: 'styles',
+              //   type: 'object',
+              //   fields: [
+              //     {
+              //       title: 'Button Style',
+              //       name: 'style',
+              //       type: 'string',
+              //       options: {
+              //         list: [
+              //           { title: 'Default', value: '' },
+              //           { title: 'Primary', value: 'is-primary' },
+              //           { title: 'White', value: 'is-white' },
+              //         ],
+              //         layout: 'radio',
+              //       },
+              //     },
+              //     {
+              //       title: 'Large Size',
+              //       name: 'isLarge',
+              //       type: 'boolean',
+              //       options: {
+              //         layout: 'checkbox',
+              //       },
+              //       initialValue: false,
+              //     },
+              //     {
+              //       title: 'Full Width',
+              //       name: 'isBlock',
+              //       type: 'boolean',
+              //       options: {
+              //         layout: 'checkbox',
+              //       },
+              //       initialValue: false,
+              //     },
+              //   ],
+              //   hidden: ({ parent }) => !parent.isButton,
+              // },
+            ],
+          },
+          {
+            title: 'Render',
+            name: 'render',
+            type: 'object',
+            blockEditor: {
+              icon: Repeat,
+              render: ({ children, element }) => (
+                <span className={element}>{children}</span>
+              ),
+            },
+            fields: [
               {
-                title: 'Style as Button?',
-                name: 'isButton',
-                type: 'boolean',
-                initialValue: false
+                title: 'Element',
+                name: 'element',
+                type: 'string',
+                description:
+                  "Set the typography preset to use for this text. Allows the element to keep it's semantic configuration while using a different typography style preset.",
+                options: {
+                  list: [
+                    { title: 'Body1', value: 'typography--body1' },
+                    { title: 'Body2', value: 'typography--body2' },
+                    { title: 'Body3', value: 'typography--body3' },
+                    { title: 'Large', value: 'typography--large' },
+                    { title: 'Header1', value: 'typography--header1' },
+                    { title: 'Header2', value: 'typography--header2' },
+                    { title: 'Header3', value: 'typography--header3' },
+                    { title: 'Header4', value: 'typography--header4' },
+                  ],
+                },
+                initialValue: 'typography--body1',
+                validation: (Rule) => Rule.required(),
               },
-              {
-                name: 'styles',
-                type: 'object',
-                fields: [
-                  {
-                    title: 'Button Style',
-                    name: 'style',
-                    type: 'string',
-                    options: {
-                      list: [
-                        { title: 'Default', value: '' },
-                        { title: 'Primary', value: 'is-primary' },
-                        { title: 'White', value: 'is-white' }
-                      ],
-                      layout: 'radio'
-                    }
-                  },
-                  {
-                    title: 'Large Size',
-                    name: 'isLarge',
-                    type: 'boolean',
-                    options: {
-                      layout: 'checkbox'
-                    },
-                    initialValue: false
-                  },
-                  {
-                    title: 'Full Width',
-                    name: 'isBlock',
-                    type: 'boolean',
-                    options: {
-                      layout: 'checkbox'
-                    },
-                    initialValue: false
-                  }
-                ],
-                hidden: ({ parent }) => !parent.isButton
-              }
-            ]
-          }
-        ]
-      }
+            ],
+          },
+        ],
+      },
     },
-    customImage(),
-    {
-      type: 'horizontalRule'
-    }
-  ]
+    photo(),
+    // {
+    //   type: 'horizontalRule',
+    // },
+  ],
 }

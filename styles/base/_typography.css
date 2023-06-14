@@ -14,48 +14,57 @@
   }
 
   body {
-    @apply bg-pageBG text-pageText font-sans leading-100;
+    @apply bg-pageBG text-pageText font-basis-grotesque-pro;
   }
 
-  p {
-    @apply m-0 text-16 leading-150;
-  }
-
-  strong {
-    @apply font-semibold;
+  p,
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply m-0;
   }
 
   ul {
     @apply list-none m-0 p-0;
   }
 
+  /* Body */
+  .typography--body1 {
+    @apply text-16 md:text-18 leading-normal;
+  }
+
+  .typography--body2 {
+    @apply text-14 md:text-16 leading-22 md:leading-24;
+  }
+
+  .typography--body3 {
+    @apply text-12 md:text-14 leading-22 md:leading-24;
+  }
+
+  .typography--large {
+    @apply text-18 md:text-21 leading-normal;
+  }
   /* Headlines */
-  h1,
-  .is-h1 {
-    @apply m-0 text-48 font-normal leading-125;
+  .typography--header1 {
+    @apply text-40 md:text-56 lg:text-72 tracking-tighter font-bold leading-wound;
   }
 
-  h2,
-  .is-h2 {
-    @apply m-0 text-36 font-normal leading-125;
+  .typography--header2 {
+    @apply text-32 md:text-52 md:tracking-tighter font-bold leading-wound;
   }
 
-  h3,
-  .is-h3 {
-    @apply m-0 text-30 font-normal leading-125;
+  .typography--header3 {
+    @apply text-28 md:text-40 font-bold leading-wound;
   }
 
-  h4,
-  .is-h4 {
-    @apply m-0 text-24 font-normal leading-135;
+  .typography--header4 {
+    @apply text-20 md:text-24 font-bold leading-gripped;
   }
 
-  h5 {
-    @apply m-0 text-20 font-normal leading-125;
-  }
-
-  h6 {
-    @apply m-0 text-12 font-normal leading-125;
+  .typography--numeric {
+    font-family: Barlow !important;
+    font-weight: 500;
   }
 
   /* Links */
@@ -76,7 +85,7 @@
   hr {
     @apply my-60 mx-0 border-0 h-1 bg-pageText;
   }
-  
+
   ::-moz-selection {
     @apply bg-pageText text-pageBG;
   }
@@ -107,7 +116,7 @@ details {
     .is-inverted & {
       outline-color: var(--pageBG);
     }
-    
+
     body:not(.is-tabbing) & {
       outline: none;
     }
@@ -127,12 +136,12 @@ ul {
     &:not(:last-child) {
       @apply mb-6;
     }
-    
+
     li {
       @apply mb-1;
-      
+
       &::before {
-        content: "+";
+        content: '+';
         @apply inline-block relative -ml-4 w-4;
       }
     }
@@ -154,11 +163,7 @@ h1,
   }
 
   .hero & {
-    font-size: clamp(
-      4rem,
-      calc(1.5rem + 3.5vw),
-      15rem
-    )
+    font-size: clamp(4rem, calc(1.5rem + 3.5vw), 15rem);
   }
 }
 

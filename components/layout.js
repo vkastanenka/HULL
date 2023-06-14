@@ -8,7 +8,7 @@ import { pageTransitionSpeed } from '@lib/animate'
 import HeadSEO from '@components/head-seo'
 import CookieBar from '@components/cookie-bar'
 import Header from '@components/header'
-import Footer from '@components/footer'
+// import Footer from '@components/footer'
 
 const pageTransitionAnim = {
   show: {
@@ -78,7 +78,7 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
           onSetup={({ height }) => setHeaderHeight(height)}
         />
         <main id="content">{children}</main>
-        <Footer data={site.footer} />
+        {/* <Footer data={site.footer} /> */}
       </m.div>
     </>
   )

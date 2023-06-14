@@ -7,6 +7,10 @@ export default {
   name: 'grid',
   type: 'object',
   icon: TextAlignLeft,
+  groups: [
+    { title: 'Content', name: 'content', default: true },
+    { title: 'Settings', name: 'settings' },
+  ],
   fields: [
     {
       name: 'gridNote',
@@ -14,58 +18,86 @@ export default {
       options: {
         icon: Question,
         headline: 'How to setup a Grid',
-        message: `Grids are first defined by the number of "spaces" they should have. Visually, you can think of this like available cells in a spreadsheet or table. Then, we define the columns that should exist within this grid, and what "space(s)" they should occupy at different screen sizes.`
-      }
+        message: `Grids are first defined by the number of "spaces" they should have. Visually, you can think of this like available cells in a spreadsheet or table. Then, we define the columns that should exist within this grid, and what "space(s)" they should occupy at different screen sizes.`,
+      },
     },
     {
       title: 'Grid Size',
       name: 'size',
-      type: 'number',
+      type: 'string',
       description:
-        'Set the default number of column spaces available for this grid',
+        'Set the default number of column spaces available for this grid.',
+      initialValue: 'grid-cols-12',
+      group: 'content',
       options: {
         list: [
-          { title: '1', value: 1 },
-          { title: '2', value: 2 },
-          { title: '3', value: 3 },
-          { title: '4', value: 4 },
-          { title: '5', value: 5 },
-          { title: '6', value: 6 },
-          { title: '7', value: 7 },
-          { title: '8', value: 8 },
-          { title: '9', value: 9 },
-          { title: '10', value: 10 },
-          { title: '11', value: 11 },
-          { title: '12', value: 12 }
-        ]
+          { title: '1', value: 'grid-cols-1' },
+          { title: '2', value: 'grid-cols-2' },
+          { title: '3', value: 'grid-cols-3' },
+          { title: '4', value: 'grid-cols-4' },
+          { title: '5', value: 'grid-cols-5' },
+          { title: '6', value: 'grid-cols-6' },
+          { title: '7', value: 'grid-cols-7' },
+          { title: '8', value: 'grid-cols-8' },
+          { title: '9', value: 'grid-cols-9' },
+          { title: '10', value: 'grid-cols-10' },
+          { title: '11', value: 'grid-cols-11' },
+          { title: '12', value: 'grid-cols-12' },
+        ],
       },
-      validation: Rule => Rule.required(),
-      initialValue: 12
     },
     {
       title: 'Columns',
       name: 'columns',
+      group: 'content',
       type: 'array',
       of: [{ type: 'gridColumn' }],
-      description: 'The columns that are part of this grid'
-    }
+      description: 'The columns that are part of this grid.',
+      validation: (Rule) => Rule.required(),
+      initialValue: [
+        {
+          _type: 'gridColumn',
+        },
+      ],
+    },
+    {
+      title: 'Settings',
+      name: 'settings',
+      type: 'array',
+      of: [{ type: 'sectionSettings' }],
+      group: 'settings',
+      initialValue: [
+        {
+          _type: 'sectionSettings',
+          breakpoint: ' ',
+          paddingTop: 'pt-64',
+          paddingBottom: 'pb-64',
+        },
+        {
+          _type: 'sectionSettings',
+          breakpoint: 'md',
+          paddingTop: 'pt-128',
+          paddingBottom: 'pb-128',
+        },
+      ],
+    },
   ],
   preview: {
     select: {
-      columns: 'columns'
+      columns: 'columns',
     },
     prepare({ columns }) {
-      const name = getTypeTitles(columns.map(col => col.blocks[0]._type))
+      const name = getTypeTitles(columns.map((col) => col.blocks[0]._type))
 
       const image = (columns[0].blocks[0].content || []).find(
-        block => block._type === 'photo'
+        (block) => block._type === 'photo'
       )
 
       return {
         title: `${columns.length} Column${columns.length > 1 ? 's' : ''}`,
         subtitle: name,
-        media: image
+        media: image,
       }
-    }
-  }
+    },
+  },
 }
