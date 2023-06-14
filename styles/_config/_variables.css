@@ -1,16 +1,26 @@
 /* Variables */
 :root {
-  --black: #000000;
+  --black: #373E4D;
   --white: #ffffff;
 
   --black-hsl: 0, 0%, 0%;
   --white-hsl: 0, 0%, 100%;
 
-  --pageBG: #f4f4f0;
-  --pageText: #000000;
+  --pageBG: #F7F8FD;
+  --pageText: #373E4D;
 
   --pageBG-hsl: 60, 14%, 95%;
   --pageText-hsl: 0, 0%, 0%;
+
+  --blue: #2C5CAA;
+  --coral: #F38374;
+  --lightBlue: #B8D1DB;
+  --red: #E43C2F;
+  --green: #00607F;
+  --yellow: #F5EA47;
+  --pink: #F5B5C3;
+  --gold: #B3A168;
+  --premiumBlue: #003399;
 }
 
 [data-theme='dark'] {

@@ -4,6 +4,8 @@ import cx from 'classnames'
 
 import { buildSrcSet, buildSrc } from '@lib/helpers'
 
+import { getBlockSettings } from '@lib/settings'
+
 const Photo = ({
   photo,
   width,
@@ -60,7 +62,12 @@ const Photo = ({
   }, [isLoaded])
 
   return (
-    <figure className={className ? className : null}>
+    <figure
+      className={cx(
+        className ? className : null,
+        getBlockSettings(photo?.settings)
+      )}
+    >
       <div
         className={cx('ar', {
           'has-fill': layout === 'fill' || layout === 'contain',

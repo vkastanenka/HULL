@@ -3,10 +3,14 @@ import cx from 'classnames'
 
 import BlockContent from '@components/block-content'
 
-const Freeform = ({ data }) => {
-  const { maxWidth, textAlign, content } = data
+import { getBlockSettings } from '@lib/settings'
 
-  return <BlockContent className={cx(maxWidth, textAlign)} blocks={content} />
+const Freeform = ({ data }) => {
+  const { content, settings } = data
+
+  return (
+    <BlockContent className={cx(getBlockSettings(settings))} blocks={content} />
+  )
 }
 
 export default Freeform

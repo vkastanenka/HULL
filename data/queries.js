@@ -20,8 +20,29 @@ const link = `
   }
 `
 
-// Construct our "image meta" GROQ
+export const blockSettings = `
+  _type,
+  breakpoint,
+  justifySelf,
+  maxWidth,
+  paddingTop,
+  paddingBottom,
+  paddingLeft,
+  paddingRight
+`
+
+export const sectionSettings = `
+  _type,
+  breakpoint,
+  textColor,
+  backgroundColor,
+  paddingBottom,
+  paddingTop
+`
+
+// Construct our "image meta" GROQ // TODO: Remove unused fields
 export const imageMeta = `
+  _type,
   "alt": coalesce(alt, asset->alt),
   asset,
   crop,
@@ -30,7 +51,10 @@ export const imageMeta = `
   "id": asset->assetId,
   "type": asset->mimeType,
   "aspectRatio": asset->metadata.dimensions.aspectRatio,
-  "lqip": asset->metadata.lqip
+  "lqip": asset->metadata.lqip,
+  settings[]{
+    ${blockSettings}
+  }
 `
 
 // Construct our "portable text content" GROQ
@@ -60,8 +84,12 @@ export const blocks = `
     content[]{
       ${ptContent}
     },
-    textAlign,
-    maxWidth
+    settings[]{
+      ${blockSettings}
+    }
+  },
+  _type == "photo" => {
+    ${imageMeta}
   },
   _type == 'accordions' => {
     _type,
@@ -84,15 +112,24 @@ export const modules = `
     size,
     columns[]{
       sizes[]{
+        alignItems,
         breakpoint,
-        width,
-        justify,
-        align,
-        start
+        colWidth,
+        contentWidth,
+        justifyContent,
+        order,
+        paddingBottom,
+        paddingLeft,
+        paddingRight,
+        paddingTop,
+        start,
       },
       blocks[]{
         ${blocks}
       }
+    },
+    settings[]{
+      ${sectionSettings}
     }
   },
   _type == 'hero' => {

@@ -1,64 +1,44 @@
-export default ({ hasDisplayOptions = true, ...props } = {}) => {
-  const crops = [
-    { title: 'Original', value: 0 },
-    { title: '1 : 1 (square)', value: 1 },
-    { title: '5 : 7', value: 0.7142857143 },
-    { title: '4 : 6', value: 0.6666666667 },
-    { title: '16 : 9', value: 1.7777777778 }
-  ]
+import { Camera } from 'phosphor-react'
 
+export default ({ ...props } = {}) => {
   return {
     title: 'Photo',
     name: 'photo',
     type: 'image',
-    options: {
-      hotspot: true
-    },
+    icon: Camera,
     fields: [
-      ...(hasDisplayOptions
-        ? [
-            {
-              title: 'Display Size (aspect ratio)',
-              name: 'customRatio',
-              type: 'number',
-              options: {
-                isHighlighted: true,
-                list: crops
-              },
-              validation: Rule => {
-                return Rule.custom((field, context) =>
-                  'asset' in context.parent && field === undefined
-                    ? 'Required!'
-                    : true
-                )
-              }
-            }
-          ]
-        : []),
       {
         title: 'Alternative text',
         name: 'alt',
         type: 'string',
-        description: 'Important for SEO and accessiblity.'
-      }
+        description: 'Important for SEO and accessiblity.',
+        options: {
+          isHighlighted: true,
+        },
+      },
+      {
+        title: 'Settings',
+        name: 'settings',
+        type: 'array',
+        of: [{ type: 'blockSettings' }],
+        options: {
+          isHighlighted: true,
+        },
+      },
     ],
     preview: {
       select: {
         asset: 'asset',
         alt: 'asset.alt',
         customAlt: 'alt',
-        customRatio: 'customRatio'
       },
-      prepare({ alt, customAlt, customRatio, asset }) {
-        const crop = crops.find(crop => crop.value === customRatio)
-
+      prepare({ alt, customAlt, asset }) {
         return {
           title: customAlt ?? alt ?? '(alt text missing)',
-          subtitle: crop.title,
-          media: asset
+          media: asset,
         }
-      }
+      },
     },
-    ...props
+    ...props,
   }
 }

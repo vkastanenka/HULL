@@ -45,9 +45,9 @@ export default {
       type: 'array',
       of: [
         { type: 'grid' },
-        { type: 'hero' },
-        { type: 'marquee' },
-        { type: 'dividerPhoto' },
+        // { type: 'hero' },
+        // { type: 'marquee' },
+        // { type: 'dividerPhoto' },
         {
           title: 'Reusable Section',
           type: 'reference',
