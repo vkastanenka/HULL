@@ -7,7 +7,7 @@ import CustomLink from '@components/link'
 
 const regexTypography = /^body\d|^large|^header\d|^normal/
 
-const Typography = ({ variant, ...props }) => {
+const Typography = ({ variant, markDefs, ...props }) => {
   const data = {
     El: 'p',
     className: 'typography--body1',
@@ -51,6 +51,10 @@ const Typography = ({ variant, ...props }) => {
       break
   }
 
+  markDefs.forEach((def) => {
+    if (def._type === 'render') data.className = ''
+  })
+
   return <data.El className={cx(data.className)} {...props} />
 }
 
@@ -65,7 +69,11 @@ export const blockSerializers = {
       //   markDefs.some((c) => c._type === 'link' && c.isButton === true)
 
       if (regexTypography.test(style)) {
-        return <Typography variant={style}>{props.children}</Typography>
+        return (
+          <Typography variant={style} markDefs={markDefs}>
+            {props.children}
+          </Typography>
+        )
       }
 
       // handle all other blocks with the default serializer
@@ -85,7 +93,9 @@ export const blockSerializers = {
 
       return <CustomLink link={{ ...mark, title }} />
     },
-    numeric: ({ children }) => <span className="typography--numeric">{children}</span>,
+    numeric: ({ children }) => (
+      <span className="typography--numeric">{children}</span>
+    ),
     textAlignCenter: ({ children }) => (
       <span style={{ display: 'block', textAlign: 'center' }}>{children}</span>
     ),

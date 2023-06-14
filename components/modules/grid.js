@@ -37,8 +37,6 @@ const GridBlock = ({ block }) => {
   switch (type) {
     case 'freeform':
       return <Freeform data={block} />
-    case 'photo':
-      return <Photo photo={block} />
     default:
       return null
   }

@@ -21,8 +21,6 @@ export const getTypeTitles = (types) => {
     switch (type) {
       case 'freeform':
         return 'Freeform'
-      case 'photo':
-        return 'Photo'
       case 'accordions':
         return 'Accordions'
       case 'productCard':

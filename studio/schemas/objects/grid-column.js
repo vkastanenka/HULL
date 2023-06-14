@@ -31,7 +31,7 @@ export default {
       name: 'blocks',
       type: 'array',
       description: 'The content that exists inside this column',
-      of: [{ type: 'freeform' }, { type: 'photo' }],
+      of: [{ type: 'freeform' }],
     },
   ],
   preview: {
