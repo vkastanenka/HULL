@@ -28,18 +28,18 @@ export default {
         tone: 'caution'
       }
     },
-    {
-      title: 'Featured Products',
-      name: 'featured',
-      type: 'array',
-      of: [
-        {
-          title: 'Product',
-          type: 'reference',
-          to: [{ type: 'product' }]
-        }
-      ],
-      validation: Rule => Rule.unique().max(2)
-    }
+    // {
+    //   title: 'Featured Products',
+    //   name: 'featured',
+    //   type: 'array',
+    //   of: [
+    //     {
+    //       title: 'Product',
+    //       type: 'reference',
+    //       to: [{ type: 'product' }]
+    //     }
+    //   ],
+    //   validation: Rule => Rule.unique().max(2)
+    // }
   ]
 }

@@ -5,7 +5,12 @@ import { IntentLink, Link } from 'part:@sanity/base/router'
 
 import { Card, Stack, Text } from '@sanity/ui'
 
-import { House, Browser, ShoppingCart, WarningOctagon } from 'phosphor-react'
+import {
+  House,
+  Browser,
+  // ShoppingCart,
+  WarningOctagon,
+} from 'phosphor-react'
 
 import { standardViews } from './previews/standard'
 
@@ -64,32 +69,32 @@ const currentHomePage = S.listItem()
       .views(standardViews)
   })
 
-// Extract our shop page
-const currentShopPage = S.listItem()
-  .title('Shop All Page')
-  .icon(ShoppingCart)
-  .child(async () => {
-    const data = await sanityClient.fetch(`
-    *[_type == "generalSettings"][0]{
-      shop->{_id}
-    }
-  `)
+// // Extract our shop page
+// const currentShopPage = S.listItem()
+//   .title('Shop All Page')
+//   .icon(ShoppingCart)
+//   .child(async () => {
+//     const data = await sanityClient.fetch(`
+//     *[_type == "generalSettings"][0]{
+//       shop->{_id}
+//     }
+//   `)
 
-    if (!data?.shop)
-      return S.component(() => (
-        <EmptyNotice
-          title="Shop Page"
-          type="collection"
-          link="settings;general"
-          linkTitle="General Settings"
-        />
-      )).title('Shop All Page')
+//     if (!data?.shop)
+//       return S.component(() => (
+//         <EmptyNotice
+//           title="Shop Page"
+//           type="collection"
+//           link="settings;general"
+//           linkTitle="General Settings"
+//         />
+//       )).title('Shop All Page')
 
-    return S.document()
-      .id(data.shop._id)
-      .schemaType('collection')
-      .views(standardViews)
-  })
+//     return S.document()
+//       .id(data.shop._id)
+//       .schemaType('collection')
+//       .views(standardViews)
+//   })
 
 // Extract our error page
 const currentErrorPage = S.listItem()
@@ -126,7 +131,7 @@ export const pagesMenu = S.listItem()
       .title('Pages')
       .items([
         currentHomePage,
-        currentShopPage,
+        // currentShopPage,
         currentErrorPage,
         S.listItem()
           .title('Other Pages')
@@ -140,7 +145,7 @@ export const pagesMenu = S.listItem()
                   *[_type == "generalSettings"][0].error._ref,
                 ]) && !(_id in path("drafts.**"))`
               )
-              .child(documentId =>
+              .child((documentId) =>
                 S.document()
                   .documentId(documentId)
                   .schemaType('page')
@@ -158,7 +163,7 @@ export const pagesMenu = S.listItem()
           .child(
             S.documentTypeList('section')
               .title('Reusable Sections')
-              .child(documentId =>
+              .child((documentId) =>
                 S.document()
                   .documentId(documentId)
                   .schemaType('section')
@@ -168,7 +173,11 @@ export const pagesMenu = S.listItem()
                 (intent, { type }) =>
                   ['create', 'edit'].includes(intent) && type === 'section'
               )
-          )
+          ),
+        // Reusable section settings
+        // S.divider(),
+        // Reusable components
+        // Reusable component settings
       ])
   )
   .icon(Browser)

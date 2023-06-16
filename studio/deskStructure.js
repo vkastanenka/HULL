@@ -2,16 +2,16 @@ import S from '@sanity/desk-tool/structure-builder'
 
 import { settingsMenu } from './desk/settings'
 import { pagesMenu } from './desk/pages'
-import { shopMenu } from './desk/shop'
+// import { shopMenu } from './desk/shop'
 import { menusMenu } from './desk/menus'
 
 const hiddenDocTypes = listItem =>
   ![
     'page',
     'section',
-    'product',
-    'productVariant',
-    'collection',
+    // 'product',
+    // 'productVariant',
+    // 'collection',
     'filter',
     'solidColor',
 
@@ -20,7 +20,7 @@ const hiddenDocTypes = listItem =>
     'promoSettings',
     'headerSettings',
     'footerSettings',
-    'shopSettings',
+    // 'shopSettings',
     'seoSettings',
 
     'menu',
@@ -35,8 +35,8 @@ export default () =>
     .items([
       pagesMenu,
       S.divider(),
-      shopMenu,
-      S.divider(),
+      // shopMenu,
+      // S.divider(),
       menusMenu,
       S.divider(),
       settingsMenu,
