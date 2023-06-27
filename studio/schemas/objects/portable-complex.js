@@ -156,8 +156,8 @@ export default {
                 type: 'reference',
                 to: [
                   { type: 'page' },
-                  { type: 'collection' },
-                  { type: 'product' },
+                  // { type: 'collection' },
+                  // { type: 'product' },
                 ],
                 hidden: ({ parent }) => parent.linkType !== 'internal',
               },

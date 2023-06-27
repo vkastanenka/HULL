@@ -18,13 +18,17 @@ const singletons = [
   'promoSettings',
   'headerSettings',
   'footerSettings',
-  'shopSettings',
+  // 'shopSettings',
   'seoSettings',
 ]
 
 const editAndDelete = ['product', 'productVariant']
 
-const previews = ['page', 'product', 'collection']
+const previews = [
+  'page',
+  'product',
+  // 'collection'
+]
 
 const PreviewAction = (props) => {
   const slug = props.draft

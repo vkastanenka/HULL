@@ -4,7 +4,8 @@ module.exports = {
   },
   content: ['./components/**/*.js', './lib/**/*.js', './pages/**/*.js'],
   safelist: [
-    /(max-w|w)-(prose|xs|sm|md|ls|xl|2xl|3xl|4xl|5xl|6xl|7xl)/,
+    /flex/,
+    /(max-w|w)-(prose|xs|sm|md|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl)/,
     /p(t|b|l|r)-(4|8|16|24|32|48|64|96|128)/,
     /(self|justify-self|items|justify)-(start|center|end)/,
     /(bg|text)-(black|white|blue|coral|lightBlue|red|green|yellow|pink|premiumBlue)/,

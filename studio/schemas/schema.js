@@ -4,10 +4,10 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // Document types
 import page from './documents/page'
 import section from './documents/section'
-import product from './documents/shop-product'
-import productVariant from './documents/shop-variant'
-import collection from './documents/shop-collection'
-import filter from './documents/filter'
+// import product from './documents/shop-product'
+// import productVariant from './documents/shop-variant'
+// import collection from './documents/shop-collection'
+// import filter from './documents/filter'
 import solidColor from './documents/color'
 
 import generalSettings from './documents/settings-general'
@@ -15,7 +15,7 @@ import cookieSettings from './documents/settings-cookie'
 import promoSettings from './documents/settings-promo'
 import headerSettings from './documents/settings-header'
 import footerSettings from './documents/settings-footer'
-import shopSettings from './documents/settings-shop'
+// import shopSettings from './documents/settings-shop'
 import seoSettings from './documents/settings-seo'
 import menu from './documents/menu'
 import redirect from './documents/redirect'
@@ -26,23 +26,23 @@ import hero from './modules/hero'
 import marquee from './modules/marquee'
 import dividerPhoto from './modules/divider-photo'
 import newsletter from './modules/newsletter'
-import productHero from './modules/product-hero'
-import collectionGrid from './modules/collection-grid'
+// import productHero from './modules/product-hero'
+// import collectionGrid from './modules/collection-grid'
 
 // Object types
 import gridColumn from './objects/grid-column'
 import gridSize from './objects/grid-size'
 import seo from './objects/seo'
 
-import shopFilter from './objects/shop-filter'
-import shopSort from './objects/shop-sort'
+// import shopFilter from './objects/shop-filter'
+// import shopSort from './objects/shop-sort'
 
-import productGalleryPhotos from './objects/product-gallery-photos'
-import productListingPhotos from './objects/product-listing-photos'
-import productCartPhotos from './objects/product-cart-photos'
-import productOption from './objects/product-option'
-import productOptionValue from './objects/product-option-value'
-import productOptionSettings from './objects/product-option-settings'
+// import productGalleryPhotos from './objects/product-gallery-photos'
+// import productListingPhotos from './objects/product-listing-photos'
+// import productCartPhotos from './objects/product-cart-photos'
+// import productOption from './objects/product-option'
+// import productOptionValue from './objects/product-option-value'
+// import productOptionSettings from './objects/product-option-settings'
 
 import navDropdown from './objects/nav-dropdown'
 import navPage from './objects/nav-page'
@@ -56,7 +56,7 @@ import complexPortableText from './objects/portable-complex'
 import freeform from './objects/freeform'
 import accordions from './objects/accordions'
 import accordion from './objects/accordion'
-import productCard from './objects/product-card'
+// import productCard from './objects/product-card'
 
 import participant from './objects/participant'
 
@@ -77,10 +77,10 @@ export default createSchema({
     /* 1: Document types */
     page,
     section,
-    product,
-    productVariant,
-    collection,
-    filter,
+    // product,
+    // productVariant,
+    // collection,
+    // filter,
     solidColor,
 
     generalSettings,
@@ -88,7 +88,7 @@ export default createSchema({
     promoSettings,
     headerSettings,
     footerSettings,
-    shopSettings,
+    // shopSettings,
     seoSettings,
     menu,
     redirect,
@@ -100,8 +100,8 @@ export default createSchema({
     marquee,
     dividerPhoto,
     newsletter,
-    productHero,
-    collectionGrid,
+    // productHero,
+    // collectionGrid,
 
     /* ----------------------- */
     /* 3: Generic Object types */
@@ -109,15 +109,15 @@ export default createSchema({
     gridSize,
     seo,
 
-    shopFilter,
-    shopSort,
+    // shopFilter,
+    // shopSort,
 
-    productGalleryPhotos,
-    productListingPhotos,
-    productCartPhotos,
-    productOption,
-    productOptionValue,
-    productOptionSettings,
+    // productGalleryPhotos,
+    // productListingPhotos,
+    // productCartPhotos,
+    // productOption,
+    // productOptionValue,
+    // productOptionSettings,
 
     navDropdown,
     navPage,
@@ -131,7 +131,7 @@ export default createSchema({
     freeform,
     accordions,
     accordion,
-    productCard,
+    // productCard,
 
     participant,
 

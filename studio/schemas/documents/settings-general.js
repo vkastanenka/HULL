@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 
 export default {
   title: 'General Settings',
@@ -18,18 +18,18 @@ export default {
       description: 'This page will show at the root of your domain',
       group: 'displays'
     },
-    {
-      title: 'Shop Page',
-      name: 'shop',
-      type: 'reference',
-      to: [{ type: 'collection' }],
-      description: (
-        <>
-          This collection will show at: <code>/shop</code>
-        </>
-      ),
-      group: 'displays'
-    },
+    // {
+    //   title: 'Shop Page',
+    //   name: 'shop',
+    //   type: 'reference',
+    //   to: [{ type: 'collection' }],
+    //   description: (
+    //     <>
+    //       This collection will show at: <code>/shop</code>
+    //     </>
+    //   ),
+    //   group: 'displays'
+    // },
     {
       title: 'Error Page (404)',
       name: 'error',
@@ -61,13 +61,13 @@ export default {
       type: 'string',
       group: 'advanced'
     },
-    {
-      title: 'Klaviyo Site ID (Public API Key)',
-      description: 'For product waitlists and newsletter forms',
-      name: 'klaviyoAccountID',
-      type: 'string',
-      group: 'advanced'
-    }
+    // {
+    //   title: 'Klaviyo Site ID (Public API Key)',
+    //   description: 'For product waitlists and newsletter forms',
+    //   name: 'klaviyoAccountID',
+    //   type: 'string',
+    //   group: 'advanced'
+    // }
   ],
   preview: {
     prepare() {
